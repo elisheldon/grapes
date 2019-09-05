@@ -20,7 +20,7 @@ class AddWineScreen extends React.Component {
     wine: this.props.navigation.state.params,
     notes: null,
     rating: 2.5,
-    image: null
+    photo: null,
   }
 
   showInfo = key => {
@@ -42,7 +42,7 @@ class AddWineScreen extends React.Component {
     let newWine = {...this.state.wine} // create a new mutable object
     newWine.notes = this.state.notes
     newWine.rating = this.state.rating
-    newWine.image = this.state.image
+    newWine.image = this.state.photo || this.props.navigation.state.params.image
     cellar = this.props.cellar || []
     if(!this.isWineInCellar(newWine,cellar)){
       this.props.addWineToCellar(newWine)
@@ -70,7 +70,7 @@ class AddWineScreen extends React.Component {
       allowsEditing: false,
     });
     if (!result.cancelled) {
-      this.setState({ image: result.uri });
+      this.setState({ photo: result.uri });
     }
   }
 
@@ -97,13 +97,13 @@ class AddWineScreen extends React.Component {
             value = {this.state.notes} 
             onChangeText = {this.handleNotesChange}
           />
-          {this.state.image &&
-            <View style={styles.imageView}>
-              <Image source={{uri: this.state.image}} style={styles.image}/>
+          {this.state.photo &&
+            <View style={styles.photoView}>
+              <Image source={{uri: this.state.photo}} style={styles.photo}/>
             </View>
           }
           <Button
-            title={this.state.image ? 'Retake photo' : 'Take a photo'}
+            title={this.state.photo ? 'Retake photo' : 'Take a photo'}
             color='#92278f'
             onPress={this.handlePhotoButton}>
           </Button>
@@ -137,11 +137,11 @@ const styles = StyleSheet.create({
   spaceAbove: {
     marginTop: 20,
   },
-  imageView: {
+  photoView: {
     alignItems: 'center',
     marginBottom: 20,
   },
-  image: {
+  photo: {
     height: 240,
     width: 240,
   },

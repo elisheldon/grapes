@@ -2,6 +2,7 @@
   "expo": {
     "name": "Grapes",
     "slug": "grapes",
+    "description": "Grapes allows users to search for wines by name, winery, type, etc and see details for each result. Wines can be added to a collection with a rating, tasting notes and a photo.",
     "privacy": "public",
     "sdkVersion": "34.0.0",
     "platforms": [
@@ -9,11 +10,11 @@
       "android",
       "web"
     ],
-    "version": "1.0.0",
+    "version": "1.0.1",
     "orientation": "portrait",
-    "icon": "./assets/icon.jpg",
+    "icon": "./assets/icon.png",
     "splash": {
-      "image": "./assets/splash.jpg",
+      "image": "./assets/splash.png",
       "resizeMode": "cover",
       "backgroundColor": "#92278f"
     },
@@ -24,7 +25,11 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.elisheldon.grapes"
+    },
+    "android": {
+      "package": "com.elisheldon.grapes"
     }
   }
 }
